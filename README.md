@@ -1,42 +1,43 @@
-# Shopify Active Products Export
+# Exportador de Produtos Ativos do Shopify
 
-Single-file PHP script that exports every **active** product (and every
-variant) from a Shopify store to a CSV file, ready for Excel: product
-title, product id, variant id, vendor — one row per variant.
+Script PHP de arquivo único que exporta todo produto **ativo** (e cada
+variante) de uma loja Shopify para um CSV pronto pra Excel: título do
+produto, id do produto, id da variante, fornecedor — uma linha por
+variante.
 
-## Why
+## Por que existe
 
-The Shopify admin doesn't export product/variant IDs in bulk in a form
-that's easy to paste into a spreadsheet for matching against other
-systems (e.g. matching SKUs/variant IDs against a course catalog, ERP,
-or price sheet). This script paginates the Admin REST API, handles
-rate limiting (HTTP 429) with backoff/retry, and writes IDs as Excel-safe
-text (`="123456"`) so large numeric IDs don't get mangled by Excel's
-auto-formatting.
+O admin do Shopify não exporta ids de produto/variante em massa de uma
+forma fácil de colar numa planilha pra cruzar com outros sistemas (ex.:
+cruzar SKUs/variant IDs com um catálogo de curso, ERP, ou tabela de
+preço). Este script pagina a Admin REST API, trata rate limiting (HTTP
+429) com espera/nova tentativa, e escreve os ids como texto seguro pro
+Excel (`="123456"`) pra ids numéricos grandes não serem estragados pela
+formatação automática do Excel.
 
-## Requirements
+## Requisitos
 
-- PHP 7.4+ with cURL and mbstring
-- A Shopify Admin API access token with `read_products` scope
+- PHP 7.4+ com cURL e mbstring
+- Um token de acesso da Admin API do Shopify com escopo `read_products`
 
-## Setup
+## Configuração
 
 ```bash
-export SHOPIFY_SHOP="your-store.myshopify.com"
+export SHOPIFY_SHOP="sua-loja.myshopify.com"
 export SHOPIFY_ACCESS_TOKEN="shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-export SHOPIFY_API_VERSION="2024-07"   # optional, defaults to 2024-07
+export SHOPIFY_API_VERSION="2024-07"   # opcional, padrão 2024-07
 ```
 
-## Usage
+## Uso
 
 ```bash
 php export_products_active.php
 ```
 
-or drop it on a PHP host and open it in a browser — either way it
-streams progress logs as it goes and writes `products_active.csv` next
-to the script.
+ou coloque numa hospedagem PHP e abra no navegador — de qualquer forma
+ele transmite logs de progresso conforme roda e escreve
+`products_active.csv` ao lado do script.
 
-## License
+## Licença
 
 MIT
