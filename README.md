@@ -37,7 +37,3 @@ php export_products_active.php
 ou coloque numa hospedagem PHP e abra no navegador — de qualquer forma
 ele transmite logs de progresso conforme roda e escreve
 `products_active.csv` ao lado do script.
-
-## Licença
-
-MIT
